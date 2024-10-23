@@ -4,6 +4,7 @@ import { WebhookEvent } from "@clerk/nextjs/server";
 import prisma from "@/lib";
 
 export async function POST(req: Request) {
+  //helper
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
