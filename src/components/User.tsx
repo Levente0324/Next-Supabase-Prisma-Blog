@@ -22,7 +22,11 @@ const User = async () => {
         <h1 className="text-base text-white/70">{user?.email}</h1>
         <div className="flex flex-row gap-2">
           <Editbutton id={user?.id} name={user?.name} />
-          <SignOutButton className="border border-white/70 rounded w-20 h-8 text-sm mt-1" />
+          <SignOutButton>
+            <button className="border border-white/70 rounded w-20 h-8 text-sm mt-1">
+              Sign out
+            </button>
+          </SignOutButton>
         </div>
       </div>
     </div>
