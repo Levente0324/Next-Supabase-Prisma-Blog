@@ -2,6 +2,7 @@ import prisma from "@/lib";
 import { SignOutButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
+import Editbutton from "./Editbutton.client";
 
 const User = async () => {
   const clerkUser = await currentUser();
@@ -20,10 +21,8 @@ const User = async () => {
         <h1 className="text-4xl text-teal-400 font-bold">{user?.name}</h1>
         <h1 className="text-base text-white/70">{user?.email}</h1>
         <div className="flex flex-row gap-2">
-          <button className="border border-white/70 rounded w-24 h-8 text-sm mt-1">
-            Edit profile
-          </button>
-          <SignOutButton className="border border-white/70 rounded w-20 h-8 text-sm mt-1"></SignOutButton>
+          <Editbutton id={user?.id} name={user?.name} />
+          <SignOutButton className="border border-white/70 rounded w-20 h-8 text-sm mt-1" />
         </div>
       </div>
     </div>

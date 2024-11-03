@@ -1,7 +1,6 @@
 import prisma from "@/lib";
 import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
-import { createRef } from "react";
 
 const CreatePost = async () => {
   const clerkUser = await currentUser();
@@ -53,6 +52,3 @@ const CreatePost = async () => {
 };
 
 export default CreatePost;
-function processDataByType(arg0: any): void {
-  throw new Error("Function not implemented.");
-}

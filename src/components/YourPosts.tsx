@@ -47,7 +47,7 @@ const Userposts = (props: Posttype) => {
           <div className="pl-5 pt-2 pb-1 flex flex-row gap-5">
             <form action={deletePost}>
               <button type="submit">
-                <Image src="/trash.png" width={24} height={24} alt="heart" />
+                <Image src="/delete.png" width={24} height={24} alt="heart" />
               </button>
             </form>
           </div>
