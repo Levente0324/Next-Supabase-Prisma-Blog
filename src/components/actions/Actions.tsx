@@ -13,6 +13,6 @@ export async function changeName(id: string, name: string) {
       },
     });
   } catch (e) {
-    console.log("Hiba a nev valtoztataskor");
+    console.log("Hiba a nev valtoztataskor", e);
   }
 }

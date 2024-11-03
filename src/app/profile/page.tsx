@@ -28,8 +28,9 @@ const page = async () => {
       </FadeinAnimation>
       <div>
         <FadeUpAnimation>
-          {posts.map((post) => (
+          {posts.map((post, i) => (
             <Userposts
+              key={i}
               id={post.id}
               text={post.text}
               created={post.createdAt}

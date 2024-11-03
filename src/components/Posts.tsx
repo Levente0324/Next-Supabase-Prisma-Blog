@@ -4,6 +4,13 @@ import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 
+type likedByType = {
+  id: string;
+  email: string;
+  name: string;
+  clerkId: string;
+}[];
+
 const Posts = async () => {
   //GET CURRENT USER
   const clerkUser = await currentUser();
@@ -67,7 +74,7 @@ const Posts = async () => {
   };
 
   //CHECK IF THE POST IS LIKED
-  const isLiked = (likedBy: any) => {
+  const isLiked = (likedBy: likedByType) => {
     let anyad = 0;
     likedBy.forEach((p) => {
       if (p.id === user?.id) {
@@ -83,8 +90,11 @@ const Posts = async () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center pt-3">
-      {posts.map((post) => (
-        <div className="text-white border border-white/70 rounded-xl mt-2 w-[600px] h-min flex flex-row px-3 pt-3 pb-2">
+      {posts.map((post, i) => (
+        <div
+          key={i}
+          className="text-white border border-white/70 rounded-xl mt-2 w-[600px] h-min flex flex-row px-3 pt-3 pb-2"
+        >
           <div>
             <Image src="/user.png" width={48} height={48} alt="usericon" />
           </div>

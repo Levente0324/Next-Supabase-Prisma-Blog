@@ -66,8 +66,11 @@ export default async function PostDetails({
         <CreateComment postid={params.postid} />
       </div>
       <div className="mt-8">
-        {comments.map((comment) => (
-          <div className="text-white border border-white/70 rounded-xl mt-2 w-[600px] h-min flex flex-row px-3 pt-3 pb-2">
+        {comments.map((comment, i) => (
+          <div
+            key={i}
+            className="text-white border border-white/70 rounded-xl mt-2 w-[600px] h-min flex flex-row px-3 pt-3 pb-2"
+          >
             <div>
               <Image src="/user.png" width={48} height={48} alt="usericon" />
             </div>

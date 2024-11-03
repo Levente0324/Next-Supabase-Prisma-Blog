@@ -3,6 +3,10 @@
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion/dom";
 
+interface IProps {
+  children: React.ReactNode;
+}
+
 export const FadeinVariant = {
   initial: { opacity: 0 },
   animate: {
@@ -13,7 +17,7 @@ export const FadeinVariant = {
     },
   },
 };
-const FadeinAnimation = ({ children }: any) => {
+const FadeinAnimation = ({ children }: IProps) => {
   return (
     <motion.div variants={FadeinVariant} initial="initial" animate="animate">
       {children}

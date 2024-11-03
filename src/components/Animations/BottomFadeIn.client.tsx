@@ -3,6 +3,10 @@
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion/dom";
 
+interface IProps {
+  children: React.ReactNode;
+}
+
 export const fadeUpVariant = {
   initial: { opacity: -1, y: 250 },
   animate: {
@@ -14,7 +18,7 @@ export const fadeUpVariant = {
     },
   },
 };
-const FadeUpAnimation = ({ children }: any) => {
+const FadeUpAnimation = ({ children }: IProps) => {
   return (
     <motion.div variants={fadeUpVariant} initial="initial" animate="animate">
       {children}
