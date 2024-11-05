@@ -1,4 +1,3 @@
-import prisma from "@/lib";
 import { SignOutButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Editbutton from "./Editbutton.client";
