@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import Image from "next/image";
 
 type Posttype = {
+  key: number;
   id: string;
   text: string;
   created: Date;
@@ -13,6 +14,11 @@ type Posttype = {
 const Userposts = (props: Posttype) => {
   const deletePost = async () => {
     "use server";
+    await prisma.comment.deleteMany({
+      where: {
+        postId: props.id,
+      },
+    });
     await prisma.post.delete({
       where: {
         id: props.id,

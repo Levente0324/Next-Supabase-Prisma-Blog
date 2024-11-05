@@ -1,16 +1,11 @@
 import prisma from "@/lib";
 import { SignOutButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Editbutton from "./Editbutton.client";
+import { getCurrentUser } from "./actions/Actions";
 
 const User = async () => {
-  const clerkUser = await currentUser();
-  const user = await prisma.user.findUnique({
-    where: {
-      clerkId: clerkUser?.id,
-    },
-  });
+  const user = await getCurrentUser();
 
   return (
     <div className="text-white p-6 flex flex-row w-full h-min">

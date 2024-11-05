@@ -1,14 +1,9 @@
 import prisma from "@/lib";
-import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import { getCurrentUser } from "./actions/Actions";
 
 const CreatePost = async () => {
-  const clerkUser = await currentUser();
-  const user = await prisma.user.findUnique({
-    where: {
-      clerkId: clerkUser?.id,
-    },
-  });
+  const user = await getCurrentUser();
 
   const PostThePost = async (formData: FormData) => {
     "use server";

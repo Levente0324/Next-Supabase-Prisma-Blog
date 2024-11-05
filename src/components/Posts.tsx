@@ -1,8 +1,8 @@
 import prisma from "@/lib";
-import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
+import { getCurrentUser } from "./actions/Actions";
 
 type likedByType = {
   id: string;
@@ -13,12 +13,7 @@ type likedByType = {
 
 const Posts = async () => {
   //GET CURRENT USER
-  const clerkUser = await currentUser();
-  const user = await prisma.user.findUnique({
-    where: {
-      clerkId: clerkUser?.id,
-    },
-  });
+  const user = await getCurrentUser();
 
   //GET POSTS
   const posts = await prisma.post.findMany({ include: { likedBy: true } });
