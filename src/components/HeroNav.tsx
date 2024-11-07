@@ -1,11 +1,11 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignUpButton, UserButton } from "@clerk/nextjs";
 
 const Nav = () => {
   return (
     <div className="mx-4 mt-4 px-6 bg-black/85 text-white rounded-2xl h-16 flex justify-between items-center">
       <div className="flex content-center font-second text-blue-400 text-base pt-1">
         <SignedOut>
-          <SignInButton />
+          <SignUpButton />
         </SignedOut>
         <SignedIn>
           <UserButton />
