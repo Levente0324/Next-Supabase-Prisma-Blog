@@ -2,7 +2,6 @@ import { getCurrentUser } from "@/components/actions/Actions";
 import FadeUpAnimation from "@/components/Animations/BottomFadeIn.client";
 import FadeinAnimation from "@/components/Animations/SimpleFadeIn.client";
 import MainNav from "@/components/MainNav";
-import { Separator } from "@/components/ui/separator.client";
 import User from "@/components/User";
 import Userposts from "@/components/YourPosts";
 import prisma from "@/lib";
@@ -14,7 +13,6 @@ const page = async () => {
   return (
     <div className="w-[1000px] h-full font-second sticky">
       <MainNav />
-      <Separator className="opacity-70" />
       <FadeinAnimation>
         <div>
           <User />

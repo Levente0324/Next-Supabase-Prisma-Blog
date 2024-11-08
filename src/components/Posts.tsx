@@ -83,12 +83,25 @@ const Posts = async () => {
     }
   };
 
+  //NUMBER OF LIKES
+  const numberOfLikes = async (postid: string) => {
+    const post = await prisma.post.findUnique({
+      where: {
+        id: postid,
+      },
+      include: {
+        likedBy: true,
+      },
+    });
+    return post?.likedBy.length;
+  };
+
   return (
     <div className="w-full h-full flex flex-col items-center pt-3">
       {posts.map((post, i) => (
         <div
           key={i}
-          className="text-white border border-white/70 rounded-xl mt-2 w-[600px] h-min flex flex-row px-3 pt-3 pb-2"
+          className="text-white border border-white/70 rounded-xl mb-3 w-[600px] h-min flex flex-row px-3 pt-3 pb-2"
         >
           <div>
             <Image src="/user.png" width={48} height={48} alt="usericon" />
@@ -96,7 +109,7 @@ const Posts = async () => {
           <div>
             <div className="flex flex-row gap-2 pl-3">
               <div>
-                <h1 className="text-teal-400 font-bold">
+                <h1 className="text-teal-400 font-bold tracking-wide text-base">
                   {findusername(post.authorId)}
                 </h1>
               </div>
@@ -107,8 +120,8 @@ const Posts = async () => {
                 <p>{post.createdAt.getDate()}.</p>
               </div>
             </div>
-            <div className="pl-3">
-              <h1 className="text-lg">{post.text}</h1>
+            <div className="pl-3 py-2">
+              <h1 className="text-xl track">{post.text}</h1>
             </div>
             <div className="pl-4 pt-2 flex flex-row">
               <form action={addLike}>
@@ -130,6 +143,13 @@ const Posts = async () => {
                   />
                 </button>
               </form>
+              <h1
+                className={`ml-1.5 text-base font-bold ${
+                  isLiked(post.likedBy) ? "text-red-500" : "text-white"
+                }`}
+              >
+                {numberOfLikes(post.id)}
+              </h1>
               <Link href={`/mainpage/${post.id}`} className="w-6 h-6 ml-5">
                 <Image
                   src="/comment.png"
