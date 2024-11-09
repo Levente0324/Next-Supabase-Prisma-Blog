@@ -17,7 +17,7 @@ const User = async () => {
         <div className="flex flex-row gap-2">
           <Editbutton id={user?.id} name={user?.name} />
           <SignOutButton>
-            <button className="border border-white/70 rounded w-20 h-8 text-sm mt-1">
+            <button className="border border-white/70 rounded w-20 h-8 text-sm mt-1 hover:text-teal-400">
               Sign out
             </button>
           </SignOutButton>

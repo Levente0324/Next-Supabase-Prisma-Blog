@@ -14,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html
+        lang="en"
+        className="bg-gradient-to-r from-gray-950 via-slate-900 to-gray-950 flex"
+      >
         <body>{children}</body>
       </html>
     </ClerkProvider>

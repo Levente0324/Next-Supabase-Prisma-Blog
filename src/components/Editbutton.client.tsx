@@ -33,7 +33,7 @@ const Editbutton = (props: prop) => {
   return (
     <>
       <button
-        className="border border-white/70 rounded w-24 h-8 text-sm mt-1 font-second"
+        className="border border-white/70 rounded w-24 h-8 text-sm mt-1 font-second hover:text-teal-400"
         onClick={() => setIsOpen(true)}
       >
         Edit profile
