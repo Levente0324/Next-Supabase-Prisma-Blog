@@ -29,7 +29,7 @@ const Userposts = (props: Posttype) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center pt-3">
-      <div className="text-white border rounded-xl border-white/70 mt-2 w-[600px] h-min flex flex-row px-3 pt-3 pb-2">
+      <div className="text-white border rounded-xl border-white/70 mt-2 w-[600px] h-min flex flex-row px-3 pt-3 pb-2 shadow-[0px_0px_15px_1px_rgba(255,255,255,0.1)]">
         <div>
           <Image src="/user.png" width={48} height={48} alt="usericon" />
         </div>

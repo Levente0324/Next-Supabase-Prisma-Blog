@@ -96,12 +96,22 @@ const Posts = async () => {
     return post?.likedBy.length;
   };
 
+  //NUMBER OF COMMENTS
+  const numberOfComments = async (postid: string) => {
+    const comments = await prisma.comment.findMany({
+      where: {
+        postId: postid,
+      },
+    });
+    return comments.length;
+  };
+
   return (
     <div className="w-full h-full flex flex-col items-center pt-3">
       {posts.map((post, i) => (
         <div
           key={i}
-          className="text-white border border-white/70 rounded-xl mb-3 w-[600px] h-min flex flex-row px-3 pt-3 pb-2"
+          className="text-white border border-white/70 rounded-xl mb-3 w-[600px] h-min flex flex-row px-3 pt-3 pb-2 shadow-[0px_0px_15px_1px_rgba(255,255,255,0.1)]"
         >
           <div>
             <Image src="/user.png" width={48} height={48} alt="usericon" />
@@ -150,14 +160,17 @@ const Posts = async () => {
               >
                 {numberOfLikes(post.id)}
               </h1>
-              <Link href={`/mainpage/${post.id}`} className="w-6 h-6 ml-5">
+              <Link href={`/mainpage/${post.id}`} className="w-8 h-8 ml-5">
                 <Image
                   src="/comment.png"
-                  width={24}
-                  height={24}
+                  width={28}
+                  height={28}
                   alt="comment"
                 />
               </Link>
+              <h1 className="ml-1.5 text-base font-bold text-white">
+                {numberOfComments(post.id)}
+              </h1>
             </div>
           </div>
         </div>

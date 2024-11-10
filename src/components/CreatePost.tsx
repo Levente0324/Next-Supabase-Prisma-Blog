@@ -18,7 +18,7 @@ const CreatePost = async () => {
   };
 
   return (
-    <div className="mt-2 flex justify-center items-center flex-col h-56 ">
+    <div className="mt-2 flex justify-center items-center flex-col h-56">
       <div>
         <h1 className="text-xl text-white">Create a post</h1>
       </div>
@@ -30,7 +30,7 @@ const CreatePost = async () => {
             name="content"
             placeholder="Content..."
             defaultValue=""
-            className="p-2 pl-3 rounded-xl text-xl tracking-wide text-white bg-transparent placeholder:text-white border border-white/70 focus:outline-none focus:placeholder:text-transparent resize-none"
+            className="p-2 pl-3 rounded-xl text-xl tracking-wide text-white bg-transparent placeholder:text-white border border-white/70 focus:outline-none focus:placeholder:text-transparent resize-none shadow-[0px_0px_15px_1px_rgba(255,255,255,0.1)]"
           />
           <div className="flex justify-end">
             <button

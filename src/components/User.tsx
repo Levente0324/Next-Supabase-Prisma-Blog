@@ -1,7 +1,8 @@
 import { SignOutButton } from "@clerk/nextjs";
 import Image from "next/image";
-import Editbutton from "./Editbutton.client";
 import { getCurrentUser } from "./actions/Actions";
+import { EditButtonShad } from "./EditButtonShad.client";
+import { Button } from "./ui/button";
 
 const User = async () => {
   const user = await getCurrentUser();
@@ -15,11 +16,11 @@ const User = async () => {
         <h1 className="text-4xl text-teal-400 font-bold">{user?.name}</h1>
         <h1 className="text-base text-white/70">{user?.email}</h1>
         <div className="flex flex-row gap-2">
-          <Editbutton id={user?.id} name={user?.name} />
+          <EditButtonShad id={user?.id} name={user?.name} />
           <SignOutButton>
-            <button className="border border-white/70 rounded w-20 h-8 text-sm mt-1 hover:text-teal-400">
+            <Button className="bg-transparent border border-white/70 rounded w-20 h-8 text-sm mt-1 hover:text-teal-400 hover:bg-transparent">
               Sign out
-            </button>
+            </Button>
           </SignOutButton>
         </div>
       </div>

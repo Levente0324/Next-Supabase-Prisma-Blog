@@ -2,6 +2,7 @@
 
 import prisma from "@/lib";
 import { currentUser } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 
 export async function changeName(id: string, name: string) {
   try {
@@ -16,6 +17,7 @@ export async function changeName(id: string, name: string) {
   } catch (e) {
     console.log("Hiba a nev valtoztataskor", e);
   }
+  revalidatePath("/profile");
 }
 
 export async function getCurrentUser() {

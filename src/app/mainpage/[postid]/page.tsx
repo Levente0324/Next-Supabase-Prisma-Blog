@@ -100,6 +100,18 @@ export default async function PostDetails({
     return post?.likedBy.length;
   };
 
+  //DELETE COMMENT
+  const deleteComment = async (formData: FormData) => {
+    "use server";
+    const id = formData.get("id") as string;
+    await prisma.comment.delete({
+      where: {
+        id: id,
+      },
+    });
+    revalidatePath(`/mainpage/${params.postid}`);
+  };
+
   return (
     <div className="pt-5">
       <div className="w-full h-3">
@@ -107,7 +119,7 @@ export default async function PostDetails({
           <Image src="/back.png" width={32} height={32} alt="back" />
         </Link>
       </div>
-      <div className="text-white border border-white/70 rounded-lg mt-10 w-[600px] h-min flex flex-row px-3 pt-3 pb-2">
+      <div className="text-white border border-white/70 rounded-lg mt-10 w-[600px] h-min flex flex-row px-3 pt-3 pb-2 shadow-[0px_0px_15px_1px_rgba(255,255,255,0.1)]">
         <div>
           <Image src="/user.png" width={48} height={48} alt="usericon" />
         </div>
@@ -186,8 +198,21 @@ export default async function PostDetails({
                   <p>{comment.createdAt.getDate()}.</p>
                 </div>
               </div>
-              <div className="pl-3">
+              <div className="pl-3 py-1">
                 <h1 className="text-lg">{comment.text}</h1>
+              </div>
+              <div className="mt-1 ml-4">
+                <form action={deleteComment}>
+                  <input type="hidden" name="id" value={comment.id} />
+                  <button type="submit">
+                    <Image
+                      src="/delete.png"
+                      width={22}
+                      height={22}
+                      alt="delete"
+                    />
+                  </button>
+                </form>
               </div>
             </div>
           </div>
